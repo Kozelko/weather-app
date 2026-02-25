@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import "./style.css";
 
 const API_KEY = process.env.API_KEY;
