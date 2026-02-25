@@ -5,6 +5,7 @@ const API_KEY = process.env.API_KEY;
 const cityInput = document.getElementById("city-input");
 const searchButton = document.getElementById("search-button");
 const unitToggle = document.getElementById("unit-toggle");
+const weatherInfo = document.getElementById("weather-info");
 
 let currentUnit = "metric";
 let lastFetchedData = null;
@@ -25,11 +26,21 @@ async function fetchWeather(city) {
 function displayWeather() {
   if (!lastFetchedData) return;
 
-  const { temp, ...rest } = lastFetchedData;
+  const { temp, location, description, conditions, humidity, windspeed } =
+    lastFetchedData;
   const displayTemp = currentUnit === "metric" ? temp : (temp * 9) / 5 + 32;
   const unitSymbol = currentUnit === "metric" ? "°C" : "°F";
 
-  console.log({ ...rest, temp: `${displayTemp.toFixed(1)} ${unitSymbol}` });
+  weatherInfo.innerHTML = `
+        <h2>${location}</h2>
+        <div class="weather-details">
+            <p class="temp">${displayTemp.toFixed(1)} ${unitSymbol}</p>
+            <p class="description">${description}</p>
+            <p>Conditions: ${conditions}</p>
+            <p>Humidity: ${humidity}%</p>
+            <p>Wind Speed: ${windspeed} km/h</p>
+        </div>
+    `;
 }
 
 function processWeatherData(data) {
