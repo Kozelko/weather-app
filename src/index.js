@@ -6,12 +6,16 @@ const cityInput = document.getElementById("city-input");
 const searchButton = document.getElementById("search-button");
 const unitToggle = document.getElementById("unit-toggle");
 const weatherInfo = document.getElementById("weather-info");
+const loadingIndicator = document.getElementById("loading");
 
 let currentUnit = "metric";
 let lastFetchedData = null;
 
 async function fetchWeather(city) {
   try {
+    loadingIndicator.style.display = "flex";
+    weatherInfo.innerHTML = "";
+
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${API_KEY}&contentType=json`,
     );
@@ -20,6 +24,9 @@ async function fetchWeather(city) {
     displayWeather();
   } catch (error) {
     console.error("Error fetching weather data:", error);
+    loadingIndicator.textContent = "Error loading weather data";
+  } finally {
+    loadingIndicator.style.display = "none";
   }
 }
 
