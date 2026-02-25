@@ -2,6 +2,9 @@ import "./style.css";
 
 const API_KEY = process.env.API_KEY;
 
+const cityInput = document.getElementById("city-input");
+const searchButton = document.getElementById("search-button");
+
 async function fetchWeather(city) {
   try {
     const response = await fetch(
@@ -28,4 +31,10 @@ function processWeatherData(data) {
   };
 }
 
-fetchWeather("Bratislava");
+searchButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  const city = cityInput.value.trim();
+  if (city) {
+    fetchWeather(city);
+  }
+});
