@@ -2,7 +2,7 @@
 
 [![Deploy to GitHub Pages](https://github.com/Kozelko/weather-app/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Kozelko/weather-app/actions/workflows/pages/pages-build-deployment)
 
-Live Demo: [https://Kozelko.github.io/weather-app/](https://Kozelko.github.io/weather-app/)
+Live Demo: <a href="https://Kozelko.github.io/weather-app/" target="_blank">https://Kozelko.github.io/weather-app/</a>
 
 A modern, responsive weather application built with Vanilla JavaScript and Webpack. It fetches real-time weather data from the Visual Crossing Weather API and displays it in a clean, glassmorphism-style interface.
 
